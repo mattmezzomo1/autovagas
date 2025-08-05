@@ -1,0 +1,18 @@
+# Sample proxy list file
+# Format: host:port:username:password:protocol:country:city:state:residential
+# Example:
+proxy1.example.com:8080:user1:pass1:http:br:sao paulo:sp:residential
+proxy2.example.com:8080:user2:pass2:http:br:rio de janeiro:rj:residential
+proxy3.example.com:8080:user3:pass3:http:br:brasilia:df:residential
+proxy4.example.com:8080:user4:pass4:http:br:salvador:ba:residential
+proxy5.example.com:8080:user5:pass5:http:br:fortaleza:ce:residential
+proxy6.example.com:8080:user6:pass6:http:us:::residential
+proxy7.example.com:8080:user7:pass7:http:ca:::residential
+proxy8.example.com:8080:user8:pass8:http:mx:::residential
+proxy9.example.com:8080:user9:pass9:http:ar:::residential
+proxy10.example.com:8080:user10:pass10:http:cl:::residential
+proxy11.example.com:8080:user11:pass11:http:co:::residential
+proxy12.example.com:8080:user12:pass12:http:pe:::residential
+datacenter1.example.com:8080:user13:pass13:http:br:::
+datacenter2.example.com:8080:user14:pass14:http:us:::
+datacenter3.example.com:8080:user15:pass15:http:ca:::

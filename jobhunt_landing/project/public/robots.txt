@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://autovagas.com.br/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /
+Allow: /sobre
+Allow: /precos
+Allow: /como-funciona
+Allow: /empresas
+Allow: /blog
+Allow: /contato
+Allow: /faq
+Allow: /login
+Allow: /cadastro
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Block specific bots if needed (uncomment if necessary)
+# User-agent: BadBot
+# Disallow: /

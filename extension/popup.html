@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoVagas</title>
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icons/icon48.png" alt="AutoVagas Logo" class="logo">
+      <h1>AutoVagas</h1>
+    </header>
+    
+    <!-- Login Form (shown when not authenticated) -->
+    <div id="loginForm" class="section">
+      <h2>Login</h2>
+      <form id="authForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+        <div id="loginError" class="error-message"></div>
+      </form>
+    </div>
+    
+    <!-- Main Content (shown when authenticated) -->
+    <div id="mainContent" class="section hidden">
+      <div class="user-info">
+        <span id="userEmail"></span>
+        <button id="logoutBtn" class="btn btn-small">Sair</button>
+      </div>
+      
+      <div class="status-section">
+        <h2>Status</h2>
+        <div class="status-indicator">
+          <span class="status-label">Status:</span>
+          <span id="statusText" class="status-value">Inativo</span>
+        </div>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">Tarefas na fila:</span>
+            <span id="queueCount" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tarefas concluídas:</span>
+            <span id="completedCount" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tarefas com erro:</span>
+            <span id="failedCount" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Última atividade:</span>
+            <span id="lastActivity" class="stat-value">-</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="active-tasks-section">
+        <h3>Tarefas Ativas</h3>
+        <div id="activeTasks" class="active-tasks-list">
+          <div class="empty-state">Nenhuma tarefa ativa no momento</div>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button id="pauseBtn" class="btn">Pausar</button>
+        <button id="resumeBtn" class="btn btn-primary">Retomar</button>
+      </div>
+    </div>
+    
+    <footer>
+      <p>AutoVagas v1.0.0 - Powered by <a href="https://autovagas.com" target="_blank">AutoVagas</a></p>
+    </footer>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

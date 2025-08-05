@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento Realizado com Sucesso | Autovagas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      flex: 1;
+    }
+    
+    .success-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #28a745;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    
+    .success-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: #ffffff;
+    }
+    
+    h1 {
+      color: #28a745;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 24px;
+    }
+    
+    .details {
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .details h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 18px;
+    }
+    
+    .details ul {
+      padding-left: 20px;
+    }
+    
+    .details li {
+      margin-bottom: 8px;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #0069d9;
+    }
+    
+    footer {
+      background-color: #343a40;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+        </svg>
+      </div>
+      
+      <h1>Pagamento Realizado com Sucesso!</h1>
+      
+      <p>Obrigado por assinar o Autovagas! Seu pagamento foi processado com sucesso e sua assinatura está ativa.</p>
+      
+      <div class="details">
+        <h3>Detalhes da sua assinatura:</h3>
+        <ul>
+          <li><strong>Plano:</strong> <span id="plan-name">Premium</span></li>
+          <li><strong>Valor:</strong> <span id="plan-price">R$ 49,90/mês</span></li>
+          <li><strong>Status:</strong> <span id="subscription-status">Ativo</span></li>
+          <li><strong>Próxima cobrança:</strong> <span id="next-billing-date">15/06/2023</span></li>
+        </ul>
+      </div>
+      
+      <p>Você receberá um e-mail de confirmação com os detalhes da sua assinatura. Agora você pode aproveitar todos os recursos premium do Autovagas!</p>
+      
+      <a href="/dashboard" class="btn">Ir para o Dashboard</a>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2023 Autovagas. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Script para preencher os detalhes da assinatura
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obter parâmetros da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const planName = urlParams.get('plan') || 'Premium';
+      const planPrice = urlParams.get('price') || 'R$ 49,90/mês';
+      const status = urlParams.get('status') || 'Ativo';
+      
+      // Calcular próxima data de cobrança (30 dias a partir de hoje)
+      const nextBillingDate = new Date();
+      nextBillingDate.setDate(nextBillingDate.getDate() + 30);
+      const formattedDate = nextBillingDate.toLocaleDateString('pt-BR');
+      
+      // Preencher os elementos
+      document.getElementById('plan-name').textContent = planName;
+      document.getElementById('plan-price').textContent = planPrice;
+      document.getElementById('subscription-status').textContent = status;
+      document.getElementById('next-billing-date').textContent = formattedDate;
+      
+      // Redirecionar para o dashboard após 10 segundos
+      setTimeout(function() {
+        window.location.href = '/dashboard';
+      }, 10000);
+    });
+  </script>
+</body>
+</html>
