@@ -1,0 +1,212 @@
+/* Courses Page Styles */
+
+/* Course Cards Responsive */
+.course-card {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.course-card .flex {
+  flex-wrap: wrap;
+}
+
+.course-card * {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+/* Ensure buttons don't overflow */
+.course-card button {
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  /* Course cards adjustments */
+  .course-card {
+    padding: 16px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  /* Course cards for small screens */
+  .course-card {
+    padding: 12px;
+  }
+
+  .course-card .flex.gap-3 {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .course-card button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .course-card button span {
+    font-size: 11px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  /* Course cards for very small screens */
+  .course-card {
+    padding: 8px;
+  }
+
+  .course-card button {
+    font-size: 10px;
+    padding: 6px 8px;
+    min-width: 0;
+  }
+
+  .course-card button span {
+    display: none;
+  }
+
+  .course-card button svg {
+    margin: 0;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .course-card {
+    padding: 6px;
+  }
+
+  .course-card button svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .courses-tab-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .courses-tabs-wrapper {
+    overflow-x: visible;
+    justify-content: space-between;
+  }
+  
+  .courses-tab-button {
+    flex: 1;
+    max-width: none;
+  }
+  
+  .courses-scroll-button {
+    display: none;
+  }
+  
+  .courses-tabs-container::before,
+  .courses-tabs-container::after {
+    display: none;
+  }
+}
+
+/* Course Cards Responsive */
+.course-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Course Grid */
+@media (min-width: 768px) {
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Progress Stats Grid */
+.progress-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .progress-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Search Bar Responsive */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  padding-left: 44px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: rgb(147, 51, 234);
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+.search-input::placeholder {
+  color: rgb(156, 163, 175);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(156, 163, 175);
+  pointer-events: none;
+}
+
+/* Filter Button */
+.filter-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: rgb(156, 163, 175);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}

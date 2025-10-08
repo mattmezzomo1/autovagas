@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, OneToMany, OneToOne, ManyToMany, JoinColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { BaseEntity } from '../../common/entities/base.entity';
@@ -7,6 +7,11 @@ import { Application } from '../../applications/entities/application.entity';
 import { Job } from '../../jobs/entities/job.entity';
 import { AutoApplyConfig } from '../../auto-apply/entities/auto-apply-config.entity';
 import { Company } from '../../companies/entities/company.entity';
+import { CareerGoal } from '../../skill-development/entities/career-goal.entity';
+import { Roadmap } from '../../skill-development/entities/roadmap.entity';
+import { UserProgress } from '../../skill-development/entities/user-progress.entity';
+import { Certificate } from '../../skill-development/entities/certificate.entity';
+import { Skill } from '../../skill-development/entities/skill.entity';
 
 export enum UserRole {
   CANDIDATE = 'candidate',
@@ -138,6 +143,21 @@ export class User extends BaseEntity {
   // Relationships
   @OneToMany(() => Document, document => document.user)
   documents: Document[];
+
+  @OneToMany(() => CareerGoal, careerGoal => careerGoal.user)
+  careerGoals: CareerGoal[];
+
+  @OneToMany(() => Roadmap, roadmap => roadmap.user)
+  roadmaps: Roadmap[];
+
+  @OneToMany(() => UserProgress, progress => progress.user)
+  progress: UserProgress[];
+
+  @OneToMany(() => Certificate, certificate => certificate.user)
+  certificates: Certificate[];
+
+  @ManyToMany(() => Skill, skill => skill.users)
+  skillsEntity: Skill[];
 
   @OneToMany(() => Application, application => application.user)
   applications: Application[];

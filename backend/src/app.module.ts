@@ -17,6 +17,7 @@ import { AiModule } from './ai/ai.module';
 import { WebscraperModule } from './webscraper/webscraper.module';
 import { CoursesModule } from './courses/courses.module';
 import { MatchmakingModule } from './matchmaking/matchmaking.module';
+import { SkillDevelopmentModule } from './skill-development/skill-development.module';
 import { LoggingModule } from './common/modules/logging.module';
 import { CustomThrottlerGuard } from './common/guards/throttler.guard';
 import configuration from './config/configuration';
@@ -71,6 +72,7 @@ import configuration from './config/configuration';
     AiModule,
     WebscraperModule,
     CoursesModule,
+    SkillDevelopmentModule,
     MatchmakingModule,
     LoggingModule,
   ],

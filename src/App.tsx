@@ -47,6 +47,10 @@ import { CreditCheckoutSuccess } from './pages/CreditCheckoutSuccess';
 import { ScraperDashboard } from './pages/ScraperDashboard';
 import { AdminCourses } from './pages/AdminCourses';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { SkillDevelopment } from './pages/SkillDevelopment';
+import { CareerGoals } from './pages/CareerGoals';
+import { CourseDetails } from './pages/CourseDetails';
+import { CoursePlayer } from './pages/CoursePlayer';
 import { AdminUsers } from './pages/admin/AdminUsers';
 import { AdminSubscriptions } from './pages/admin/AdminSubscriptions';
 import { AdminBotLogs } from './pages/admin/AdminBotLogs';
@@ -97,6 +101,10 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/suggestions" element={<Suggestions />} />
+        <Route path="/skill-development" element={<SkillDevelopment />} />
+        <Route path="/career-goals" element={<CareerGoals />} />
+        <Route path="/course/:courseId" element={<CourseDetails />} />
+        <Route path="/course/:courseId/watch" element={<CoursePlayer />} />
         {/* Company Routes */}
         <Route path="/company" element={<CompanyDashboard />} />
         <Route path="/company/onboarding" element={<CompanyOnboarding />} />

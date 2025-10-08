@@ -1,7 +1,8 @@
-import { Entity, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column, ManyToMany, OneToMany, JoinTable } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { BaseEntity } from '../../common/entities/base.entity';
 import { User } from '../../users/entities/user.entity';
+import { Module } from '../../skill-development/entities/module.entity';
 
 export enum CourseLevel {
   BEGINNER = 'iniciante',
@@ -75,4 +76,7 @@ export class Course extends BaseEntity {
     inverseJoinColumn: { name: 'user_id', referencedColumnName: 'id' },
   })
   users: User[];
+
+  @OneToMany(() => Module, module => module.course, { cascade: true })
+  modules: Module[];
 }

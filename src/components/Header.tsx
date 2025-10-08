@@ -15,7 +15,8 @@ import {
   BookOpen,
   LayoutDashboard,
   Users,
-  CreditCard
+  CreditCard,
+  Target
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/auth';
@@ -269,6 +270,10 @@ export const Header: React.FC = () => {
                     <Link to="/settings" className="w-full flex items-center gap-2 px-3 py-2 text-purple-200 hover:bg-white/5 rounded-lg transition-colors text-left">
                       <Settings className="w-4 h-4" />
                       Configurações
+                    </Link>
+                    <Link to="/skill-development" className="w-full flex items-center gap-2 px-3 py-2 text-purple-200 hover:bg-white/5 rounded-lg transition-colors text-left">
+                      <Target className="w-4 h-4" />
+                      Desenvolvimento de Carreira
                     </Link>
                     <Link to="/scraper" className="w-full flex items-center gap-2 px-3 py-2 text-purple-200 hover:bg-white/5 rounded-lg transition-colors text-left">
                       <Bot className="w-4 h-4" />

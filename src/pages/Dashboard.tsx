@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, BriefcaseIcon, Star, Clock, Building2, MapPin, Banknote, Zap, X, Bot, Activity, ExternalLink, FileText, Users, Sparkles, Plus, Share2, Heart, Bookmark, MoreHorizontal, MessageSquare, Upload, ArrowRight, Globe, Link2, BookOpen, Eye, Edit3, Save, Wand2, Download, Loader2, CheckCircle, AlertCircle, Briefcase } from 'lucide-react';
+import { Search, BriefcaseIcon, Star, Clock, Building2, MapPin, Banknote, Zap, X, Bot, Activity, ExternalLink, FileText, Users, Sparkles, Plus, Share2, Heart, Bookmark, MoreHorizontal, MessageSquare, Upload, ArrowRight, Globe, Link2, BookOpen, Eye, Edit3, Save, Wand2, Download, Loader2, CheckCircle, AlertCircle, Briefcase, Target } from 'lucide-react';
 import { useAuthStore } from '../store/auth';
 import { SubscriptionCard } from '../components/dashboard/SubscriptionCard';
 import { AutoApplyConfigModal } from '../components/dashboard/AutoApplyConfigModal';
@@ -14,6 +14,8 @@ import { documentService } from '../services/document.service';
 import { platformAuthService } from '../services/platformAuth.service';
 import { useAutoApplyRobot } from '../hooks/useAutoApplyRobot';
 import { CourseRecommendations } from '../components/dashboard/CourseRecommendations';
+import { CareerRoadmap } from '../components/dashboard/CareerRoadmap';
+import { MyCourses } from '../components/dashboard/MyCourses';
 
 // Tipos para aplicações
 interface Application {
@@ -46,7 +48,11 @@ interface SuggestedJob {
 
 export const Dashboard: React.FC = () => {
   const { profile, plans, toggleAutoApply, updateRobotActivity, updateProfile } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<'feed' | 'applications'>('feed');
+  const [activeTab, setActiveTab] = useState<'feed' | 'applications' | 'career' | 'courses'>(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    return (tab === 'career' || tab === 'applications' || tab === 'courses') ? tab as 'feed' | 'applications' | 'career' | 'courses' : 'feed';
+  });
   const [showPlans, setShowPlans] = useState(false);
   const [showDocumentModal, setShowDocumentModal] = useState(false);
   const [showAutoApplyConfigModal, setShowAutoApplyConfigModal] = useState(false);
@@ -1181,6 +1187,26 @@ ${profile.salaryExpectation?.min && profile.salaryExpectation?.max
                 >
                   Minhas Aplicações
                 </button>
+                <button
+                  onClick={() => setActiveTab('career')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap
+                    ${activeTab === 'career'
+                      ? 'bg-purple-500 text-white shadow-lg'
+                      : 'bg-black/20 text-purple-200 hover:bg-black/30'
+                    }`}
+                >
+                  Carreira
+                </button>
+                <button
+                  onClick={() => setActiveTab('courses')}
+                  className={`px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap
+                    ${activeTab === 'courses'
+                      ? 'bg-purple-500 text-white shadow-lg'
+                      : 'bg-black/20 text-purple-200 hover:bg-black/30'
+                    }`}
+                >
+                  Meus Cursos
+                </button>
               </div>
 
               {/* Feed */}
@@ -1372,6 +1398,16 @@ ${profile.salaryExpectation?.min && profile.salaryExpectation?.max
                     ))
                   )}
                 </div>
+              )}
+
+              {/* Career */}
+              {activeTab === 'career' && (
+                <CareerRoadmap onCreateGoal={() => navigate('/career-goals')} />
+              )}
+
+              {/* Courses */}
+              {activeTab === 'courses' && (
+                <MyCourses />
               )}
             </div>
           </div>
